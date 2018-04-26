@@ -19,9 +19,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.swp
 
 /node_modules
 /yarn-error.log
 
 .byebug_history
-*.swp
+
+# session
+wip.session
