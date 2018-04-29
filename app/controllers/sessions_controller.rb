@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    params[:session][:id] = nil
+    params[:session][:email] = nil
   end
 
   def create
@@ -15,7 +17,8 @@ class SessionsController < ApplicationController
       flash[:danger] = "Incorrect password for user #{mail}."
       render 'new'
     else
-      # create session with cookies
+      log_in user
+      redirect_to user
     end
   end
 end
