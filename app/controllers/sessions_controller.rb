@@ -3,8 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    params[:session][:id] = nil
-    params[:session][:email] = nil
   end
 
   def create
