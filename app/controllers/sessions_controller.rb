@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
       flash.now[:danger] = "User #{mail} does not exist."
       render 'new'
     elsif !user.authenticate params[:session][:password]
-      flash[:danger] = "Incorrect password for user #{mail}."
+      flash.now[:danger] = "Incorrect password for user #{mail}."
       render 'new'
     else
       log_in user
-      remember user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
     end
   end
